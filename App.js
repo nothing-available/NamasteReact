@@ -27,37 +27,53 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-const heading = React.createElement(
-  "h1",
-  {
-    id: "title",
-    key: "h1"
-  },
-  "heading 1 for parcel"
-);
+
+
+// * instead of using createElement we can use JSX
+
+// ! JSX => React.createElement => Object => HTML(React DOM)
+
+const heading2 = <h1 id="tittle" key="h2"> Sumit is now in JSX</h1>
 
 
 
-const heading1 = React.createElement(
-  "h1",
-  {
-    id: "title",
-    key: "h2"
-  },
-  "heading1"
-);
+// * Components  ==> they are two types of components
+//  1. Function Component -> It is a new way of writing a component.
+//  2. Class Component -> It is a old way of writing a component.
 
-const container = React.createElement(
-  "div",
-  {
-    id: "container",
-  },
-  [heading, heading1]
-);
+// * Function Component
 
-// create root using createRoot
+// ! Name of component should be in Capital Letter -> convention not mandatory
+
+const HeaderComponents1 = () => {
+  return (
+    <div>
+      <h1> Hey sumit is in another components </h1>
+    </div>
+  );
+};
+
+const HeaderComponents = () => {
+  return (
+    <div>
+      {console.log("Mai Betichod")} {/* use JavaScript in Function Component */}
+
+      {heading2}    {/* use ReactElement in Function Component */}
+
+      {/*Function Component in Fun. Component called component composition*/}
+      <HeaderComponents1 /> 
+
+      <h1> Hey sumit is in components </h1>
+      <h2> Again in h2 tag</h2>
+    </div>
+  );
+};
+
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// passing react element inside root
-root.render(container);
 
+// root.render(heading2);
+
+root.render(<HeaderComponents />);
 
